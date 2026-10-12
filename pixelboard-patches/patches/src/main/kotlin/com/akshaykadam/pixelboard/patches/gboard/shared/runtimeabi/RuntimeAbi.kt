@@ -13,6 +13,7 @@ internal enum class RuntimeCallId(internal val encodedAbi: String) {
     RAMBLER_RUNTIME_ENTER_VOICE_SETTINGS_SCOPE("Lcom/akshaykadam/pixelboard/extension/rambler/GboardRambler1803OfficialSelectionRuntime;->enterVoiceSettingsScope()V"),
     RAMBLER_RUNTIME_EXIT_DEFAULT_SELECTION_SUPPRESSION("Lcom/akshaykadam/pixelboard/extension/rambler/GboardRambler1803OfficialSelectionRuntime;->exitDefaultSelectionSuppression()V"),
     RAMBLER_RUNTIME_EXIT_VOICE_SETTINGS_SCOPE("Lcom/akshaykadam/pixelboard/extension/rambler/GboardRambler1803OfficialSelectionRuntime;->exitVoiceSettingsScope()V"),
+    RAMBLER_RESUME_APPEND_REWRITE_COMMIT_TEXT("Lcom/akshaykadam/pixelboard/extension/rambler/GboardRamblerResumeAppend;->rewriteCommitText(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/CharSequence;Ljava/lang/String;)Ljava/lang/String;"),
     RAMBLER_RUNTIME_UPDATE_OFFICIAL_SELECTION("Lcom/akshaykadam/pixelboard/extension/rambler/GboardRambler1803OfficialSelectionRuntime;->updateOfficialSelection(Z)V"),
     AI_WRITING_TOOLS_RUNTIME_APPLY_OVERRIDDEN_FLAG_VALUE("Lcom/akshaykadam/pixelboard/extension/writingtools/GboardAiWritingToolsRuntime;->applyOverriddenFlagValue(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"),
     AI_WRITING_TOOLS_VOICE_COMMAND_RUNTIME_APPLY_GEN_AI_INIT_CLIENT_TYPE("Lcom/akshaykadam/pixelboard/extension/writingtools/GboardAiWritingToolsVoiceCommandRuntime;->applyGenAiInitClientType(Ljava/lang/Object;Z)Z"),

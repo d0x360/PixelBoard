@@ -33,6 +33,14 @@ public final class GboardAdvancedVoice1803RuntimeSettings {
         }
     }
 
+    public static boolean isRamblerAppendOnlyResumeEnabled() {
+        try {
+            return snapshot().ramblerAppendOnlyResume;
+        } catch (Throwable ignored) {
+            return GboardAdvancedVoiceSettings.DEFAULT_RAMBLER_APPEND_ONLY_RESUME;
+        }
+    }
+
     public static boolean isRamblerEnabled() {
         return false;
     }
@@ -79,6 +87,7 @@ public final class GboardAdvancedVoice1803RuntimeSettings {
             return new Snapshot(
                     GboardAdvancedVoiceSettings.readEnabled(preferences),
                     GboardAdvancedVoiceSettings.readBackend(preferences),
+                    GboardAdvancedVoiceSettings.readRamblerAppendOnlyResume(preferences),
                     "local");
         } catch (Throwable failure) {
             logFailure("failed to parse settings", failure);
@@ -150,6 +159,7 @@ public final class GboardAdvancedVoice1803RuntimeSettings {
         return new Snapshot(
                 GboardAdvancedVoiceSettings.DEFAULT_ENABLED,
                 GboardAdvancedVoiceSettings.DEFAULT_BACKEND,
+                GboardAdvancedVoiceSettings.DEFAULT_RAMBLER_APPEND_ONLY_RESUME,
                 source);
     }
 
@@ -199,11 +209,14 @@ public final class GboardAdvancedVoice1803RuntimeSettings {
     static final class Snapshot {
         final boolean enabled;
         final String backend;
+        final boolean ramblerAppendOnlyResume;
         final GboardVoiceInputMode effectiveMode;
         final String source;
 
-        Snapshot(boolean enabled, String backend, String source) {
+        Snapshot(boolean enabled, String backend, boolean ramblerAppendOnlyResume,
+                String source) {
             this.enabled = enabled;
+            this.ramblerAppendOnlyResume = ramblerAppendOnlyResume;
             this.backend = backend == null
                     ? GboardAdvancedVoiceSettings.DEFAULT_BACKEND : backend;
             this.effectiveMode = enabled

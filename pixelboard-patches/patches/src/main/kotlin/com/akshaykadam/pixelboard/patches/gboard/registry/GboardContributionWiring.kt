@@ -6,6 +6,7 @@ import com.akshaykadam.pixelboard.patches.gboard.features.advancedvoice.gboardAd
 import com.akshaykadam.pixelboard.patches.gboard.features.advancedvoice.gboardAdvancedVoice1831LanguageDownloadGuardPatch
 import com.akshaykadam.pixelboard.patches.gboard.features.advancedvoice.gboardAdvancedVoiceFlagValuePatch
 import com.akshaykadam.pixelboard.patches.gboard.features.rambler.gboardRambler1803OfficialSelectorPatch
+import com.akshaykadam.pixelboard.patches.gboard.features.rambler.gboardRamblerResumeAppendPatch
 
 internal class GboardContributionWiringUnit(
     val contributionIds: Set<String>,
@@ -25,6 +26,7 @@ internal object GboardContributionWiring {
                     gboardAdvancedVoice1803ZhTwPatch,
                     gboardAdvancedVoice1831LanguageDownloadGuardPatch,
                     gboardRambler1803OfficialSelectorPatch,
+                    gboardRamblerResumeAppendPatch,
                 )
             },
         ),
