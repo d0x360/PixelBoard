@@ -41,6 +41,8 @@ public final class GboardAdvancedVoiceSettingsFeature
     private final String errorSummary;
     private final String enabledTitle;
     private final String enabledSummary;
+    private final String appendOnlyResumeTitle;
+    private final String appendOnlyResumeSummary;
     private final String sectionBehavior;
     private final String sectionInformation;
     private final String sectionOfflineSpeechModel;
@@ -92,6 +94,10 @@ public final class GboardAdvancedVoiceSettingsFeature
                 R.string.gboard_patches_advanced_voice_enabled_title);
         enabledSummary = GboardSettingsText.get(context,
                 R.string.gboard_patches_advanced_voice_enabled_summary);
+        appendOnlyResumeTitle = GboardSettingsText.get(context,
+                R.string.gboard_patches_rambler_append_only_resume_title);
+        appendOnlyResumeSummary = GboardSettingsText.get(context,
+                R.string.gboard_patches_rambler_append_only_resume_summary);
         sectionBehavior = GboardSettingsText.get(context,
                 R.string.gboard_patches_advanced_voice_section_behavior);
         sectionInformation = GboardSettingsText.get(context,
@@ -219,6 +225,12 @@ public final class GboardAdvancedVoiceSettingsFeature
                     true,
                     enabled,
                     value -> saveEnabled(host, context, value)));
+            behaviorRows.add(new GboardPatchesSettingsContract.ToggleRow(
+                    appendOnlyResumeTitle,
+                    appendOnlyResumeSummary,
+                    true,
+                    GboardAdvancedVoiceSettings.readRamblerAppendOnlyResume(preferences),
+                    value -> saveAppendOnlyResume(host, context, value)));
 
             List<GboardPatchesSettingsContract.Row> informationRows =
                     new ArrayList<GboardPatchesSettingsContract.Row>();
@@ -319,6 +331,17 @@ public final class GboardAdvancedVoiceSettingsFeature
         refreshSafely(host);
     }
 
+
+    private void saveAppendOnlyResume(GboardPatchesSettingsContract.FeatureHost host,
+            Context context, boolean enabled) {
+        try {
+            GboardAdvancedVoiceSettings.writeRamblerAppendOnlyResume(context, enabled);
+            Log.i(TAG, "Saved Rambler append-only resume=" + enabled);
+        } catch (Throwable throwable) {
+            Log.w(TAG, "Failed to save Rambler append-only resume state", throwable);
+        }
+        refreshSafely(host);
+    }
 
     private void refreshSafely(GboardPatchesSettingsContract.FeatureHost host) {
         try {

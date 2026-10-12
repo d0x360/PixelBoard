@@ -26,8 +26,13 @@ public final class GboardAdvancedVoiceSettingsSourceTest {
 
         Assert.assertTrue(keyboardGroup.contains(
                 "new GboardAdvancedVoiceSettingsFeature(context)"));
-        Assert.assertEquals(1, count(feature,
+        // Enable Advanced Voice Typing + Append-only resume.
+        Assert.assertEquals(2, count(feature,
                 "new GboardPatchesSettingsContract.ToggleRow("));
+        Assert.assertTrue(feature.contains(
+                "GboardAdvancedVoiceSettings.readRamblerAppendOnlyResume(preferences)"));
+        Assert.assertTrue(settingsText.contains(
+                "name=\"gboard_patches_rambler_append_only_resume_title\""));
         Assert.assertEquals(0, count(feature,
                 "new GboardPatchesSettingsContract.SelectorRow("));
         Assert.assertFalse(feature.contains("GboardAdvancedVoiceSettings.readBackend("));

@@ -201,6 +201,12 @@
     <string name="gboard_patches_advanced_voice_enabled_summary">
         <translation locale="en">Activate Pixel Rambler voice dictation for fast on-device speech-to-text with automatic punctuation. Restart Gboard to apply changes.</translation>
     </string>
+    <string name="gboard_patches_rambler_append_only_resume_title">
+        <translation locale="en">Append-only resume</translation>
+    </string>
+    <string name="gboard_patches_rambler_append_only_resume_summary">
+        <translation locale="en">When you stop and resume Rambler dictation, add the new words at the cursor instead of letting them land inside the earlier text. Rewrites that also edit the earlier text are left unchanged.</translation>
+    </string>
     <string name="gboard_patches_advanced_voice_section_behavior">
         <translation locale="en">Behavior</translation>
     </string>

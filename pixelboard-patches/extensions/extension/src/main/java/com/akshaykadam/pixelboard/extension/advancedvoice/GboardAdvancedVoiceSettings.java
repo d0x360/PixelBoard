@@ -12,10 +12,13 @@ public final class GboardAdvancedVoiceSettings {
             "pref_advanced_voice_typing_enabled";
     public static final String PREF_KEY_BACKEND =
             "pref_advanced_voice_backend";
+    public static final String PREF_KEY_RAMBLER_APPEND_ONLY_RESUME =
+            "pref_rambler_append_only_resume";
     public static final String BACKEND_ADVANCED = "advanced";
     public static final String BACKEND_RAMBLER = "rambler";
     public static final boolean DEFAULT_ENABLED = true;
     public static final String DEFAULT_BACKEND = BACKEND_ADVANCED;
+    public static final boolean DEFAULT_RAMBLER_APPEND_ONLY_RESUME = true;
 
     private GboardAdvancedVoiceSettings() {
     }
@@ -51,6 +54,19 @@ public final class GboardAdvancedVoiceSettings {
         return readBooleanStrict(preferences, PREF_KEY_ENABLED, DEFAULT_ENABLED);
     }
 
+    public static boolean readRamblerAppendOnlyResume(SharedPreferences preferences) {
+        return readBooleanStrict(preferences, PREF_KEY_RAMBLER_APPEND_ONLY_RESUME,
+                DEFAULT_RAMBLER_APPEND_ONLY_RESUME);
+    }
+
+    public static boolean writeRamblerAppendOnlyResume(Context context, boolean enabled) {
+        return context != null && writeRamblerAppendOnlyResume(preferences(context), enabled);
+    }
+
+    public static boolean writeRamblerAppendOnlyResume(
+            SharedPreferences preferences, boolean enabled) {
+        return writeBoolean(preferences, PREF_KEY_RAMBLER_APPEND_ONLY_RESUME, enabled);
+    }
 
     public static String readBackend(SharedPreferences preferences) {
         if (preferences == null) {
